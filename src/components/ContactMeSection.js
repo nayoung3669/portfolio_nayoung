@@ -37,7 +37,7 @@ const LandingSection = () => {
       id="contactme-section"
     >
       <VStack w="1024px" p={32} alignItems="flex-start">
-        <Heading as="h1" size="xl"  color="#FF3D96">
+        <Heading as="h1" size="xl">
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%">

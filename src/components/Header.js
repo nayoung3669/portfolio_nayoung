@@ -65,10 +65,10 @@ const Header = () => {
             <a href={socials[2].url}><FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
           </nav>
           <nav>
-            <HStack >
-              <Breadcrumb>
+            <HStack  >
+              <Breadcrumb >
                   <BreadcrumbItem>
-                    <a onClick={handleClick("introduction")}>Introduction</a>
+                    <a onClick={handleClick("introduction")} >Introduction</a>
                   </BreadcrumbItem> 
                   <BreadcrumbItem>
                     <a onClick={handleClick("projects")}>Projects</a>
