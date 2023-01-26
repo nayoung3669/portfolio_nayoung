@@ -56,7 +56,6 @@ const ProjectsSection = () => {
             imageSrc={project.getImageSrc()}
           />
         ))}
-
       </Box>
     </FullScreenSection>
   );

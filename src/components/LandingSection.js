@@ -7,7 +7,7 @@ import bioSrc from './bio.jpg';
 
 const greeting = "Hello, I'm" 
 const name = "Nayoung";
-const bio1 = "A front-end developer";
+const bio1 = "A front-end developer ";
 
 
 const LandingSection = () => (
@@ -17,9 +17,9 @@ const LandingSection = () => (
     isDarkBackground
     backgroundColor="#1c2b51"
   >
-    <VStack spacing={10} align="stretch" textAlign="center">
+    <VStack spacing={10} align="stretch" textAlign="center" >
       <Image src={bioSrc} alt='nayoungKim' borderRadius = "full" height="300px" width="320px" />  
-      <Box whiteSpace="nowrap" >
+      <Box whiteSpace="nowrap"  >
         <Wrap >
           <Heading as="h1" >{greeting}</Heading>
           <Heading color="#FF3D96" >{name}</Heading>
