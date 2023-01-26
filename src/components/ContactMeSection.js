@@ -11,6 +11,7 @@ import {
   Select,
   Textarea,
   VStack,
+  Image
 } from "@chakra-ui/react";
 import * as Yup from 'yup';
 import FullScreenSection from "./FullScreenSection";
@@ -30,7 +31,7 @@ const LandingSection = () => {
   return (
     <FullScreenSection
       isDarkBackground
-      backgroundColor="#512DA8"
+      backgroundColor="#212121"
       py={16}
       spacing={8}
     >
@@ -58,7 +59,7 @@ const LandingSection = () => {
                 />
                 <FormErrorMessage></FormErrorMessage>
               </FormControl>
-              <FormControl>
+              {/* <FormControl>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
                 <Select id="type" name="type">
                   <option value="hireMe">Freelance project proposal</option>
@@ -67,7 +68,7 @@ const LandingSection = () => {
                   </option>
                   <option value="other">Other</option>
                 </Select>
-              </FormControl>
+              </FormControl> */}
               <FormControl isInvalid={false}>
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
@@ -77,7 +78,7 @@ const LandingSection = () => {
                 />
                 <FormErrorMessage></FormErrorMessage>
               </FormControl>
-              <Button type="submit" colorScheme="purple" width="full">
+              <Button type="submit" colorScheme="pink" width="full">
                 Submit
               </Button>
             </VStack>

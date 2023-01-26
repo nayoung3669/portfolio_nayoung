@@ -4,31 +4,27 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faLinkedin,
-  faMedium,
-  faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack } from "@chakra-ui/react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+} from '@chakra-ui/react'
 
 const socials = [
   {
     icon: faEnvelope,
-    url: "mailto: hello@example.com",
+    url: "mailto: skdud3660@gmail.com",
   },
   {
     icon: faGithub,
-    url: "https://github.com",
+    url: "https://github.com/nayoung3669",
   },
   {
     icon: faLinkedin,
-    url: "https://www.linkedin.com",
-  },
-  {
-    icon: faMedium,
-    url: "https://medium.com",
-  },
-  {
-    icon: faStackOverflow,
-    url: "https://stackoverflow.com",
+    url: "https://www.linkedin.com/in/nayoung-mia-kim/",
   },
 ];
 
@@ -54,21 +50,33 @@ const Header = () => {
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
-      backgroundColor="#18181b"
+      backgroundColor="#1c2b51"
     >
-      <Box color="white" maxWidth="1280px" margin="0 auto">
+      <Box color="white" maxWidth="1280px" height="90px" margin="0 auto" borderBottom="2px" borderBottomColor="#FF3D96" >
         <HStack
           px={16}
-          py={4}
+          py={8}
           justifyContent="space-between"
           alignItems="center"
         >
-          <nav>
-            {/* Add social media links based on the `socials` data */}
+          <nav >
+            <a href={socials[0].url}><FontAwesomeIcon icon={faEnvelope} size="2x" /></a>
+            <a href={socials[1].url}><FontAwesomeIcon icon={faGithub} size="2x" /></a>
+            <a href={socials[2].url}><FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
           </nav>
           <nav>
-            <HStack spacing={8}>
-              {/* Add links to Projects and Contact me section */}
+            <HStack >
+              <Breadcrumb>
+                  <BreadcrumbItem>
+                    <a onClick={handleClick("introduction")}>Introduction</a>
+                  </BreadcrumbItem> 
+                  <BreadcrumbItem>
+                    <a onClick={handleClick("projects")}>Projects</a>
+                  </BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <a onClick={handleClick("contactme")}>Contact Me</a>
+                  </BreadcrumbItem>
+              </Breadcrumb>
             </HStack>
           </nav>
         </HStack>

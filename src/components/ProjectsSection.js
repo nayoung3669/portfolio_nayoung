@@ -1,6 +1,6 @@
 import React from "react";
 import FullScreenSection from "./FullScreenSection";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, Image } from "@chakra-ui/react";
 import Card from "./Card";
 
 const projects = [
@@ -33,7 +33,7 @@ const projects = [
 const ProjectsSection = () => {
   return (
     <FullScreenSection
-      backgroundColor="#14532d"
+      backgroundColor="#212121"
       isDarkBackground
       p={8}
       alignItems="flex-start"
@@ -55,6 +55,7 @@ const ProjectsSection = () => {
             imageSrc={project.getImageSrc()}
           />
         ))}
+
       </Box>
     </FullScreenSection>
   );
