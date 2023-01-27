@@ -1,6 +1,6 @@
 import React from "react";
 import FullScreenSection from "./FullScreenSection";
-import { Box, Heading, Image } from "@chakra-ui/react";
+import { Box, Heading, Image, Divider } from "@chakra-ui/react";
 import Card from "./Card";
 
 const projects = [
@@ -33,13 +33,14 @@ const projects = [
 const ProjectsSection = () => {
   return (
     <FullScreenSection
-      backgroundColor="#212121"
+      backgroundColor="#1c2b51"
       isDarkBackground
       p={8}
       alignItems="flex-start"
       spacing={8}
       id="projects-section"
     >
+      <Divider />
       <Heading as="h1" >
         Featured Projects
       </Heading>

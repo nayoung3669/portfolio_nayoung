@@ -23,7 +23,12 @@ const LandingSection = () => {
   const { onOpen } = useAlertContext();
 
   const formik = useFormik({
-    initialValues: {},
+    initialValues: {
+      firstName: "",
+      email: "",
+      type:"",
+      comment:"",
+    },
     onSubmit: (values) => {},
     validationSchema: Yup.object({}),
   });
@@ -60,7 +65,7 @@ const LandingSection = () => {
                 />
                 <FormErrorMessage></FormErrorMessage>
               </FormControl>
-              {/* <FormControl>
+              <FormControl>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
                 <Select id="type" name="type">
                   <option value="hireMe">Freelance project proposal</option>
@@ -69,7 +74,7 @@ const LandingSection = () => {
                   </option>
                   <option value="other">Other</option>
                 </Select>
-              </FormControl> */}
+              </FormControl>
               <FormControl isInvalid={false}>
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
