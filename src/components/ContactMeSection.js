@@ -16,11 +16,10 @@ import * as Yup from 'yup';
 import FullScreenSection from "./FullScreenSection";
 import useSubmit from "../hooks/useSubmit";
 import {useAlertContext} from "../context/alertContext";
-import * as EmailValidator from 'email-validator';
 
 const LandingSection = () => {
   const {isLoading, response, submit} = useSubmit();
-  const { onOpen } = useAlertContext();
+  const { onOpen, onClose } = useAlertContext();
 
   const {values, errors, handleBlur, handleChange, handleSubmit, touched, getFieldProps} = useFormik({
     initialValues: {
@@ -29,7 +28,8 @@ const LandingSection = () => {
       type:"",
       comment:"",
     },
-    onSubmit: (values) => {
+    onSubmit: (e) => {
+      e.preventDefault();
       alert(JSON.stringify(values, null, 2));
 
   },
@@ -40,6 +40,7 @@ const LandingSection = () => {
       comment: Yup.string().required("Comment is required."),
     }),
   });
+
 
   return (
     <FullScreenSection
@@ -54,7 +55,7 @@ const LandingSection = () => {
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(e) => {e.preventDefault(); handleSubmit(e)}}>
             <VStack spacing={4}>
               <FormControl isInvalid={touched.firstName && errors.firstName }>
                 <FormLabel htmlFor="firstName">Name</FormLabel>
@@ -108,7 +109,10 @@ const LandingSection = () => {
                 />
                 <FormErrorMessage>{errors.comment}</FormErrorMessage>
               </FormControl>
-              <Button type="submit" bgColor="#FF3D96" width="full" _hover={{ border:"2px", borderColor: '#FF3D96', bg: "#1c2b51"}}>
+              <Button type="submit" bgColor="#FF3D96" width="full" _hover={{ border:"2px", borderColor: '#FF3D96', bg: "#1c2b51"}}
+                isLoading={isLoading} onClick={() => {
+                  useAlertContext.onOpen ? null : null}}
+              >
                 Submit
               </Button>
             </VStack>
