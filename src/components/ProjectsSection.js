@@ -40,8 +40,8 @@ const ProjectsSection = () => {
       spacing={8}
       id="projects-section"
     >
-      <Divider />
-      <Heading as="h1" >
+      <Divider width="100%"/>
+      <Heading as="h1" pt="60px" >
         Featured Projects
       </Heading>
       <Box
@@ -58,6 +58,7 @@ const ProjectsSection = () => {
           />
         ))}
       </Box>
+      <Divider  paddingBottom={100} width="100%"/>
     </FullScreenSection>
   );
 };

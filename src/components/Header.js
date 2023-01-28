@@ -46,6 +46,7 @@ const Header = () => {
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
       backgroundColor="#1c2b51"
+      zIndex={8}
     >
       <Box color="white" maxWidth="1280px" height="90px" margin="0 auto" borderBottom="2px" borderBottomColor="#FF3D96" >
         <HStack
