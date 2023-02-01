@@ -6,7 +6,7 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack } from "@chakra-ui/react";
-import { Breadcrumb, BreadcrumbItem, } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 const socials = [
   {
@@ -27,6 +27,7 @@ const Header = () => {
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
+    console.log(element)
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
@@ -62,17 +63,19 @@ const Header = () => {
           </nav>
           <nav>
             <HStack  >
-              <Breadcrumb >
-                  <BreadcrumbItem>
+              <Tabs color="white">
+                <TabList>
+                  <Tab _selected={{ color: '#FF3D96', borderColor: "#FF3D96"}}>
                     <a onClick={handleClick("introduction")} >Introduction</a>
-                  </BreadcrumbItem> 
-                  <BreadcrumbItem>
+                  </Tab> 
+                  <Tab _selected={{ color: '#FF3D96', borderColor: "#FF3D96"}}>
                     <a onClick={handleClick("projects")}>Projects</a>
-                  </BreadcrumbItem>
-                  <BreadcrumbItem>
+                  </Tab>
+                  <Tab _selected={{ color: '#FF3D96', borderColor: "#FF3D96"}}>
                     <a onClick={handleClick("contactme")}>Contact Me</a>
-                  </BreadcrumbItem>
-              </Breadcrumb>
+                  </Tab>
+                </TabList>
+              </Tabs>
             </HStack>
           </nav>
         </HStack>

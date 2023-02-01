@@ -16,10 +16,12 @@ import * as Yup from 'yup';
 import FullScreenSection from "./FullScreenSection";
 import useSubmit from "../hooks/useSubmit";
 import {useAlertContext} from "../context/alertContext";
+import Alert from "./Alert.js";
+
 
 const LandingSection = () => {
   const {isLoading, response, submit} = useSubmit();
-  const { onOpen, onClose } = useAlertContext();
+  const { onOpen, ...state } = useAlertContext();
 
   const {values, errors, handleBlur, handleChange, handleSubmit, touched, getFieldProps} = useFormik({
     initialValues: {
@@ -28,11 +30,14 @@ const LandingSection = () => {
       type:"",
       comment:"",
     },
-    onSubmit: (e) => {
-      e.preventDefault();
-      alert(JSON.stringify(values, null, 2));
-
-  },
+    onSubmit: (values, actions) => {
+      submit(values);
+      onOpen(response.type, response.message);
+      <Alert />
+      console.log(state);
+      // actions.resetForm();
+      }
+    ,
     validationSchema: Yup.object({
       firstName: Yup.string().required("Firstname is required."),
       email: Yup.string().email().required("Email is required."),
@@ -41,21 +46,19 @@ const LandingSection = () => {
     }),
   });
 
-
   return (
     <FullScreenSection
       isDarkBackground
       backgroundColor="#1c2b51"
       py={3}
       spacing={8}
-      id="contactme-section"
     >
-      <VStack w="1024px" p={32} pt={10} alignItems="flex-start">
-        <Heading as="h1" size="xl" >
+      <VStack w="1024px" p={32} pt={10} alignItems="flex-start" id="contactme-section">
+        <Heading as="h1" size="xl"  >
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%">
-          <form onSubmit={(e) => {e.preventDefault(); handleSubmit(e)}}>
+          <form onSubmit={handleSubmit}>
             <VStack spacing={4}>
               <FormControl isInvalid={touched.firstName && errors.firstName }>
                 <FormLabel htmlFor="firstName">Name</FormLabel>
@@ -110,15 +113,16 @@ const LandingSection = () => {
                 <FormErrorMessage>{errors.comment}</FormErrorMessage>
               </FormControl>
               <Button type="submit" bgColor="#FF3D96" width="full" _hover={{ border:"2px", borderColor: '#FF3D96', bg: "#1c2b51"}}
-                isLoading={isLoading} onClick={() => {
-                  useAlertContext.onOpen ? null : null}}
+                isLoading={isLoading}
               >
                 Submit
               </Button>
             </VStack>
           </form>
         </Box>
+
       </VStack>
+
     </FullScreenSection>
   );
 };

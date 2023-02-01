@@ -2,13 +2,11 @@ import React from "react";
 import { Heading, VStack, Text, Box, Wrap, Button, HStack } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
-import bioSrc from './bio.jpg';
-
+import bioSrc from '../images/bio.jpg';
 
 const greeting = "Hello, I'm" 
 const name = "Nayoung";
 const bio1 = "A front-end developer ";
-
 
 const LandingSection = () => (
   <FullScreenSection id="introduction-section"
@@ -29,7 +27,12 @@ const LandingSection = () => (
       </Box>
       <HStack spacing={8} align="center">
         <Button bgColor="#FF3D96"  size="md" height="50px" _hover={{ border:"2px", borderColor: '#FF3D96', bg: "#1c2b51"}} >Download CV</Button>
-        <Button bgColor="#FF3D96" size="md" _hover={{ border:"2px", borderColor: '#FF3D96', bg: "#1c2b51"}} height="50px" >View Projects</Button>
+        <Button bgColor="#FF3D96" size="md" _hover={{ border:"2px", borderColor: '#FF3D96', bg: "#1c2b51"}} height="50px" onClick={() => {
+          document.getElementById("projects-section").scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }}>View Projects</Button>
       </HStack>
     </VStack>
 
