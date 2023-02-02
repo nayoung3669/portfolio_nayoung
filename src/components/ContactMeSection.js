@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 import {
   Box,
   Button,
@@ -23,7 +23,7 @@ const LandingSection = () => {
   const {isLoading, response, submit} = useSubmit();
   const { onOpen, ...state } = useAlertContext();
 
-  const {values, errors, handleBlur, handleChange, handleSubmit, touched, getFieldProps} = useFormik({
+  const {values, errors, resetForm, handleBlur, handleChange, handleSubmit, touched, getFieldProps} = useFormik({
     initialValues: {
       firstName: "",
       email: "",
@@ -42,9 +42,20 @@ const LandingSection = () => {
       firstName: Yup.string().required("Firstname is required."),
       email: Yup.string().email().required("Email is required."),
       type: Yup.string().required("Please selece the type."),
-      comment: Yup.string().required("Comment is required."),
+      comment: Yup.string()
+        .min(25, "Comment must be 25 characters at minimum")
+        .required("Comment is required."),
     }),
   });
+
+  useEffect(()=> {
+    if (response) {
+      onOpen(response.type, response.message)
+      if (response.type == "success") {
+        resetForm();
+      }
+    }
+  })
 
   return (
     <FullScreenSection
